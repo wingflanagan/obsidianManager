@@ -1,0 +1,252 @@
+object FormMain: TFormMain
+  Left = 1433
+  Height = 520
+  Top = 390
+  Width = 455
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsDialog
+  Caption = 'Obsidian Manager'
+  ClientHeight = 520
+  ClientWidth = 455
+  OnCreate = FormCreate
+  LCLVersion = '2.2.4.0'
+  object pcMain: TPageControl
+    Left = 0
+    Height = 520
+    Top = 0
+    Width = 455
+    ActivePage = tsArchive
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    MultiLine = True
+    TabIndex = 0
+    TabOrder = 0
+    Options = [nboMultiLine]
+    object tsArchive: TTabSheet
+      Caption = 'Archiving'
+      ClientHeight = 490
+      ClientWidth = 445
+      object grpArchiveByDate: TGroupBox
+        Left = 8
+        Height = 192
+        Top = 56
+        Width = 433
+        Anchors = [akTop, akLeft, akRight]
+        Caption = 'Archive by Date'
+        ClientHeight = 175
+        ClientWidth = 431
+        TabOrder = 0
+        object dtStartDate: TDateEdit
+          Left = 8
+          Height = 28
+          Top = 24
+          Width = 216
+          CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
+          DateOrder = doNone
+          ButtonWidth = 23
+          NumGlyphs = 1
+          MaxLength = 0
+          TabOrder = 0
+        end
+        object dtEndDate: TDateEdit
+          Left = 8
+          Height = 28
+          Top = 80
+          Width = 216
+          CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
+          DateOrder = doNone
+          ButtonWidth = 23
+          NumGlyphs = 1
+          MaxLength = 0
+          TabOrder = 1
+        end
+        object fnTxtDateArchiveName: TFileNameEdit
+          Left = 8
+          Height = 28
+          Top = 136
+          Width = 417
+          FilterIndex = 0
+          HideDirectories = False
+          ButtonWidth = 23
+          NumGlyphs = 1
+          MaxLength = 0
+          TabOrder = 2
+        end
+        object cbIncludeLinkedImagesByDate: TCheckBox
+          Left = 248
+          Height = 23
+          Top = 24
+          Width = 157
+          Caption = 'Include linked images'
+          TabOrder = 3
+        end
+        object cbIncludeAttachmentsByDate: TCheckBox
+          Left = 248
+          Height = 23
+          Top = 52
+          Width = 150
+          Caption = 'Include attachments'
+          TabOrder = 4
+        end
+        object lblStartDate: TLabel
+          Left = 10
+          Height = 16
+          Top = 6
+          Width = 60
+          Caption = 'Start Date'
+          ParentColor = False
+        end
+        object lblEndDate: TLabel
+          Left = 10
+          Height = 16
+          Top = 62
+          Width = 55
+          Caption = 'End Date'
+          ParentColor = False
+        end
+        object lblArchiveName: TLabel
+          Left = 10
+          Height = 16
+          Top = 118
+          Width = 84
+          Caption = 'Archive Name'
+          ParentColor = False
+        end
+      end
+      object cbArchiveByDate: TCheckBox
+        Left = 24
+        Height = 23
+        Top = 8
+        Width = 119
+        Caption = 'Archive by date'
+        TabOrder = 1
+      end
+      object cbArchiveByFileName: TCheckBox
+        Left = 24
+        Height = 23
+        Top = 31
+        Width = 149
+        Caption = 'Archive by file name'
+        TabOrder = 2
+      end
+      object grpArchiveByFileNames: TGroupBox
+        Left = 9
+        Height = 189
+        Top = 259
+        Width = 433
+        Anchors = [akTop, akLeft, akRight, akBottom]
+        Caption = 'Archive by file names'
+        ClientHeight = 172
+        ClientWidth = 431
+        TabOrder = 3
+        object cbIncludeAttachmentsByFilename: TCheckBox
+          Left = 267
+          Height = 23
+          Top = 137
+          Width = 150
+          Caption = 'Include attachments'
+          TabOrder = 0
+        end
+        object cbIncludeLinkedImagesByFilename: TCheckBox
+          Left = 267
+          Height = 23
+          Top = 109
+          Width = 157
+          Caption = 'Include linked images'
+          TabOrder = 1
+        end
+        object ListBox1: TListBox
+          Left = 8
+          Height = 156
+          Top = 8
+          Width = 253
+          ItemHeight = 0
+          TabOrder = 2
+          TopIndex = -1
+        end
+        object btnSelectFiles: TButton
+          Left = 267
+          Height = 25
+          Top = 8
+          Width = 157
+          Caption = 'Select Files'
+          OnClick = btnSelectFilesClick
+          TabOrder = 3
+        end
+      end
+      object btnArchive: TButton
+        Left = 367
+        Height = 25
+        Top = 456
+        Width = 75
+        Caption = 'Archive'
+        TabOrder = 4
+      end
+    end
+    object tsOptions: TTabSheet
+      Caption = 'Options'
+      ClientHeight = 490
+      ClientWidth = 445
+      OnExit = tsOptionsExit
+      object deObsidianVault: TDirectoryEdit
+        Left = 8
+        Height = 28
+        Top = 24
+        Width = 424
+        DialogOptions = [ofPathMustExist, ofEnableSizing, ofViewDetail]
+        ShowHidden = False
+        ButtonWidth = 23
+        NumGlyphs = 1
+        Anchors = [akTop, akLeft, akRight]
+        MaxLength = 0
+        TabOrder = 0
+      end
+      object LabelObsidianVault: TLabel
+        Left = 8
+        Height = 16
+        Top = 8
+        Width = 87
+        Caption = 'Obsidian vault'
+        ParentColor = False
+      end
+      object deArchiveFolder: TDirectoryEdit
+        Left = 8
+        Height = 28
+        Top = 80
+        Width = 424
+        DialogOptions = [ofCreatePrompt, ofEnableSizing, ofViewDetail]
+        ShowHidden = False
+        ButtonWidth = 23
+        NumGlyphs = 1
+        Anchors = [akTop, akLeft, akRight]
+        MaxLength = 0
+        TabOrder = 1
+      end
+      object LabelArchiveFolder: TLabel
+        Left = 9
+        Height = 16
+        Top = 64
+        Width = 85
+        Caption = 'Archive folder'
+        ParentColor = False
+      end
+    end
+  end
+  object JSONPropStorage: TJSONPropStorage
+    StoredValues = <    
+      item
+        Name = 'ObsidianVault'
+      end    
+      item
+        Name = 'ArchiveFolder'
+      end>
+    Formatted = True
+    OnSavingProperties = JSONPropStorageSavingProperties
+    OnRestoringProperties = JSONPropStorageRestoringProperties
+    Left = 432
+  end
+  object OpenDialog: TOpenDialog
+    Options = [ofAllowMultiSelect, ofFileMustExist, ofEnableSizing, ofViewDetail]
+    Left = 321
+    Top = 8
+  end
+end
