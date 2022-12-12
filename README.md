@@ -1,0 +1,1 @@
+# obsidianManager
